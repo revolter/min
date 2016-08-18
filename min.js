@@ -1,7 +1,7 @@
 /**
  * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
  * @author	Iulian Onofrei
- * @version	10
+ * @version	11
  * @type	{Object}
  */
 var min = {
@@ -214,10 +214,19 @@ var min = {
 		/**
 		 * Inserts a node before another existing one.
 		 * @param	{HTMLElement}	element		The node to be inserted.
-		 * @param	{HTMLElement}	reference	The node before which element will be inserted.
+		 * @param	{HTMLElement}	reference	The node before which the element will be inserted.
 		 */
 		insertBefore: function(node, reference) {
 			reference.parentNode && reference.parentNode.insertBefore(node, reference);
+		},
+
+		/**
+		 * Inserts a node after another existing one.
+		 * @param	{HTMLElement}	element		The node to be inserted.
+		 * @param	{HTMLElement}	reference	The node after which the element will be inserted.
+		 */
+		insertAfter: function(node, reference) {
+			reference.parentNode && reference.nextSibling && reference.parentNode.insertBefore(node, reference.nextSibling);
 		},
 
 		/**
