@@ -1,7 +1,7 @@
 /**
  * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
  * @author	Iulian Onofrei
- * @version	9
+ * @version	10
  * @type	{Object}
  */
 var min = {
@@ -49,7 +49,7 @@ var min = {
 		 * @param	{String}							tagName	The tag name of the node.
 		 * @param	{Number}							[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}						[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement, HTMLCollection, null}			The node or the array of nodes  with the given tag name or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement, HTMLCollection, null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
 		 */
 		getByTagName: function(tagName, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -70,7 +70,9 @@ var min = {
 		 */
 		getByQuery: function(query, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
-				var single = (index === undefined || index === 0), nodes = (scope || document)[single ? "querySelector" : "querySelectorAll"](query);
+				var
+					single = (index === undefined || index === 0),
+					nodes = (scope || document)[single ? "querySelector" : "querySelectorAll"](query);
 
 				return index === this.ALL || single ? nodes : nodes[index];
 			} else {
@@ -121,7 +123,7 @@ var min = {
 		 * Creates an HTMLElement node.
 		 * @param	{String}		tagName			The tag name of the node.
 		 * @param	{Object}		[attributes]	Optional attributes for the node.
-		 * @return	{HTMLElements}					The requested node.
+		 * @return	{HTMLElement}					The requested node.
 		 */
 		create: function(tagName, attributes) {
 			var attributeName, attributeValue, property, style = "", node = document.createElement(tagName);
@@ -143,6 +145,27 @@ var min = {
 			}
 
 			return node;
+		},
+
+		/**
+		 * Adds a css style to a node.
+		 * @param	{HTMLElement}			node	The node for which to add the style.
+		 * @param	{Object, Array[Object]}	styles	An object or an array of objects with css property and value pairs.
+		 */
+		style: function(node, styles) {
+			var
+				cssText = "",
+				styles = styles instanceof Array ? styles : [styles];
+
+			min.forEach(styles, function(style) {
+				var
+					property = Object.keys(style)[0],
+					value = style[property];
+
+				cssText += property + ": " + value + " !important;";
+			});
+
+			node.style.cssText += cssText;
 		},
 
 		/**
