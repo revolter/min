@@ -1,7 +1,7 @@
 /**
  * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
  * @author	Iulian Onofrei
- * @version	11
+ * @version	12
  * @type	{Object}
  */
 var min = {
@@ -331,22 +331,6 @@ var min = {
 				console.error("Forgot to @grant " + name +"!");
 
 				return null;
-			},
-
-			/**
-			 * Compiles a selector and pairs of css properties and values into a css text string.
-			 * @param	{String}	selector	The css selector.
-			 * @param	{Object}	style		The pairs of css properties and values.
-			 * @return	{String}				The compiled css text.
-			 */
-			compileStyle = function(selector, style) {
-				var property, cssText = "";
-
-				for(property in style) {
-					cssText += property + ": " + style[property] + " !important;";
-				}
-
-				return selector + " { " + cssText + " } ";
 			};
 
 		return {
@@ -455,16 +439,20 @@ var min = {
 
 			/**
 			 * Adds a css style.
-			 * @param	{Object, Array[Object]}	styles	An object or an array of objects with selector and style pairs.
+			 * @param	{Object}	styles	An object with selector and style pairs.
 			 */
 			style: function(styles) {
-				var selector, cssText = "", styles = styles instanceof Array ? styles : [styles];
+				var cssText = "";
 
-				min.forEach(styles, function(style) {
-					selector = Object.keys(style)[0];
+				for(style in styles) {
+					cssText += style + " {";
 
-					cssText += compileStyle(selector, style[selector]);
-				});
+					for(property in styles[style]) {
+						cssText += property + ": " + styles[style][property] + " !important; ";
+					}
+
+					cssText += "} ";
+				}
 
 				typeof GM_addStyle === "undefined" ? error("GM_addStyle") : GM_addStyle(cssText);
 			},
