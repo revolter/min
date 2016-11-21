@@ -244,16 +244,20 @@ var min = {
 		 * @param	{Function}				getter		Getter function for the node.
 		 * @param	{String, Array[String]}	params		Parameter or parameters needed for the getter.
 		 * @param	{Function}				callback	The callback function.
+		 * @param	{Boolean}				diconnect	Set to false to prevent the observer to disconnect after the node is found.
 		 */
-		onNodeExists: function(getter, params, callback) {
+		onNodeExists: function(getter, params, callback, disconnect) {
 			params = params instanceof Array ? params : [params];
+			disconnect = disconnect === undefined ? true : disconnect;
 
 			if(getter.apply(min.dom, params)) {
 				callback(getter.apply(min.dom, params));
 			} else {
 				this.addObserver(function() {
 					if(getter.apply(min.dom, params)) {
-						this.disconnect();
+						if (disconnect) {
+							this.disconnect();
+						}
 
 						callback(getter.apply(min.dom, params));
 					}
