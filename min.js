@@ -1,7 +1,7 @@
 /**
  * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
  * @author	Iulian Onofrei
- * @version	12
+ * @version	13
  * @type	{Object}
  */
 var min = {
@@ -539,7 +539,7 @@ var min = {
 	 * Checks if current location is on given path.
 	 * @param	{String, RegExp}	path	The path to test against or a regular expression to test it.
 	 * @param	{Boolean}			exact	Pass true to match the exact path.
-	 * @return	{Boolean}					Indicates if the location is on host.
+	 * @return	{Boolean}					Indicates if the location is on path.
 	 */
 	isOnPath: function(path, exact) {
 		var currentPath = window.location.pathname;
