@@ -20,8 +20,9 @@ var min = {
 
 		/**
 		 * Returns the node by the given id.
-		 * @param	{Number}		id	The id of the node.
-		 * @return	{HTMLElement}		The node with the given id.
+		 * @param	{Number}		id		The id of the node.
+		 * @param	{HTMLElement}	[scope]	Optional root node in which to search.
+		 * @return	{HTMLElement}			The node with the given id.
 		 */
 		getById: function(id, scope) {
 			if (scope === undefined || scope instanceof HTMLElement) {
