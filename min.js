@@ -23,8 +23,12 @@ var min = {
 		 * @param	{Number}		id	The id of the node.
 		 * @return	{HTMLElement}		The node with the given id.
 		 */
-		getById: function(id) {
-			return document.getElementById(id);
+		getById: function(id, scope) {
+			if (scope === undefined || scope instanceof HTMLElement) {
+				return (scope || document).getElementById(id);
+			} else {
+				return null;
+			}
 		},
 
 		/**
