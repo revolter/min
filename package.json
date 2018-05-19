@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/revolter/min/issues"
   },
-  "homepage": "https://github.com/revolter/min#readme"
+  "homepage": "https://github.com/revolter/min#readme",
+  "dependencies": {
+    "documentation": "^6.3.3"
+  }
 }
