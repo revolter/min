@@ -32,7 +32,7 @@ var min = {
 		 * @param	{string}							className	The class name of the node.
 		 * @param	{number}							[index]		Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}						[scope]		Optional root node in which to search.
-		 * @return	{HTMLElement, HTMLCollection, null}				The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|HTMLCollection|null}				The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
 		 */
 		getByClassName: function(className, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -49,7 +49,7 @@ var min = {
 		 * @param	{string}							tagName	The tag name of the node.
 		 * @param	{number}							[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}						[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement, HTMLCollection, null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|HTMLCollection|null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
 		 */
 		getByTagName: function(tagName, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -66,7 +66,7 @@ var min = {
 		 * @param	{string}								query	The query string for searching the node.
 		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement, Array[HTMLElement], null}			The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|Array[HTMLElement]|null}			The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
 		 */
 		getByQuery: function(query, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -85,7 +85,7 @@ var min = {
 		 * @param	{string}								xPath	The xPath location the node.
 		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement, Array[HTMLElement], null}			The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|Array[HTMLElement]|null}			The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
 		 */
 		getByXPath: function(xPath, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -150,7 +150,7 @@ var min = {
 		/**
 		 * Adds a css style to a node.
 		 * @param	{HTMLElement}			node	The node for which to add the style.
-		 * @param	{Object, Array[Object]}	styles	An object or an array of objects with css property and value pairs.
+		 * @param	{Object|Array[Object]}	styles	An object or an array of objects with css property and value pairs.
 		 */
 		style: function(node, styles) {
 			var
@@ -178,10 +178,10 @@ var min = {
 
 		/**
 		 * Removes a list of nodes.
-		 * @param	{Function}								getter	Getter function for the node.
-		 * @param	{string, Array[string], HTMLElement}	params	Parameter or parameters needed for the getter.
+		 * @param	{Function}							getter	Getter function for the node.
+		 * @param	{string|Array[string]|HTMLElement}	params	Parameter or parameters needed for the getter.
 		 * 				or
-		 * @param	{HTMLElement}							...		The list of nodes to be removed.
+		 * @param	{HTMLElement}								The list of nodes to be removed.
 		 */
 		removeNodes: function(getter, params) {
 			var nodes;
@@ -242,7 +242,7 @@ var min = {
 		/**
 		 * Registers a function to be called when a node is first inserted in the DOM.
 		 * @param	{Function}				getter		Getter function for the node.
-		 * @param	{string, Array[string]}	params		Parameter or parameters needed for the getter.
+		 * @param	{string|Array[string]}	params		Parameter or parameters needed for the getter.
 		 * @param	{Function}				callback	The callback function.
 		 * @param	{boolean}				diconnect	Set to false to prevent the observer to disconnect after the node is found.
 		 */
@@ -493,9 +493,9 @@ var min = {
 
 	/**
 	 * Concatenates two collections and returns the result.
-	 * @param	{Array[HTMLElement], HTMLCollection}	first	The first collection.
-	 * @param	{Array[HTMLElement], HTMLCollection}	second	The second collection.
-	 * @return	{Array[HTMLElement]}							The resulting array.
+	 * @param	{Array[HTMLElement]|HTMLCollection}	first	The first collection.
+	 * @param	{Array[HTMLElement]|HTMLCollection}	second	The second collection.
+	 * @return	{Array[HTMLElement]}						The resulting array.
 	 */
 	concatenate: function(first, second) {
 		first instanceof HTMLCollection && (first = this.toArray(first));
@@ -537,9 +537,9 @@ var min = {
 
 	/**
 	 * Checks if current location is on given path.
-	 * @param	{string, RegExp}	path	The path to test against or a regular expression to test it.
-	 * @param	{boolean}			exact	Pass true to match the exact path.
-	 * @return	{boolean}					Indicates if the location is on path.
+	 * @param	{string|RegExp}	path	The path to test against or a regular expression to test it.
+	 * @param	{boolean}		exact	Pass true to match the exact path.
+	 * @return	{boolean}				Indicates if the location is on path.
 	 */
 	isOnPath: function(path, exact) {
 		var currentPath = window.location.pathname;
