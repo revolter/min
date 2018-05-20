@@ -470,12 +470,6 @@ var min = {
 						url: url,
 						context: context,
 						onload: function(responseDetails) {
-
-// var responseXML = null;
-// // Inject responseXML into existing Object (only appropriate for XML content).
-// if (!response.responseXML) {
-// responseXML = new DOMParser().parseFromString(response.responseText, "text/xml");
-// }
 								var doc = document.createElement("div");
 
 								doc.innerHTML = responseDetails.responseText;
