@@ -66,7 +66,7 @@ var min = {
 		 * @param	{string}								query	The query string for searching the node.
 		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement|Array[HTMLElement]|null}			The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
 		 */
 		getByQuery: function(query, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -85,7 +85,7 @@ var min = {
 		 * @param	{string}								xPath	The xPath location the node.
 		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-		 * @return	{HTMLElement|Array[HTMLElement]|null}			The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
+		 * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
 		 */
 		getByXPath: function(xPath, index, scope) {
 			if(scope === undefined || scope instanceof HTMLElement) {
@@ -149,8 +149,8 @@ var min = {
 
 		/**
 		 * Adds a css style to a node.
-		 * @param	{HTMLElement}			node	The node for which to add the style.
-		 * @param	{Object|Array[Object]}	styles	An object or an array of objects with css property and value pairs.
+		 * @param	{HTMLElement}		node	The node for which to add the style.
+		 * @param	{Object|Object[]}	styles	An object or an array of objects with css property and value pairs.
 		 */
 		style: function(node, styles) {
 			var
@@ -178,10 +178,10 @@ var min = {
 
 		/**
 		 * Removes a list of nodes.
-		 * @param	{Function}							getter	Getter function for the node.
-		 * @param	{string|Array[string]|HTMLElement}	params	Parameter or parameters needed for the getter.
+		 * @param	{Function}						getter	Getter function for the node.
+		 * @param	{string|string[]|HTMLElement}	params	Parameter or parameters needed for the getter.
 		 * 				or
-		 * @param	{HTMLElement}								The list of nodes to be removed.
+		 * @param	{HTMLElement}							The list of nodes to be removed.
 		 */
 		removeNodes: function(getter, params) {
 			var nodes;
@@ -241,10 +241,10 @@ var min = {
 
 		/**
 		 * Registers a function to be called when a node is first inserted in the DOM.
-		 * @param	{Function}				getter		Getter function for the node.
-		 * @param	{string|Array[string]}	params		Parameter or parameters needed for the getter.
-		 * @param	{Function}				callback	The callback function.
-		 * @param	{boolean}				diconnect	Set to false to prevent the observer to disconnect after the node is found.
+		 * @param	{Function}			getter		Getter function for the node.
+		 * @param	{string|string[]}	params		Parameter or parameters needed for the getter.
+		 * @param	{Function}			callback	The callback function.
+		 * @param	{boolean}			diconnect	Set to false to prevent the observer to disconnect after the node is found.
 		 */
 		onNodeExists: function(getter, params, callback, disconnect) {
 			params = params instanceof Array ? params : [params];
@@ -268,8 +268,8 @@ var min = {
 		/**
 		 * Registers a function to be called when some nodes are first inserted in the DOM.
 		 * @param	{Object}	args		Object containing the rules for retrieving the nodes, containing the keys:
-		 * 										- {Function} getter, {Array[string]} rules
-		 * 										- {Array[Array[string]]} rules
+		 * 										- {Function} getter, {string[]} rules
+		 * 										- {string[][]} rules
 		 * @param	{Function}	callback	The callback function.
 		 */
 		onNodesExist: function(args, callback) {
@@ -493,9 +493,9 @@ var min = {
 
 	/**
 	 * Concatenates two collections and returns the result.
-	 * @param	{Array[HTMLElement]|HTMLCollection}	first	The first collection.
-	 * @param	{Array[HTMLElement]|HTMLCollection}	second	The second collection.
-	 * @return	{Array[HTMLElement]}						The resulting array.
+	 * @param	{HTMLElement[]|HTMLCollection}	first	The first collection.
+	 * @param	{HTMLElement[]|HTMLCollection}	second	The second collection.
+	 * @return	{HTMLElement[]}							The resulting array.
 	 */
 	concatenate: function(first, second) {
 		first instanceof HTMLCollection && (first = this.toArray(first));
@@ -507,7 +507,7 @@ var min = {
 	/**
 	 * Converts an array-like object to an Array.
 	 * @param	{Object}		collection	The collection to be converted.
-	 * @return	{Array[Object]}				The resulting array.
+	 * @return	{Object[]}					The resulting array.
 	 */
 	toArray: function(collection) {
 		return Array.prototype.slice.call(collection);
@@ -515,8 +515,8 @@ var min = {
 
 	/**
 	 * Executes a function on elements of an array.
-	 * @param	{Array[Object]}	array		The array to be iterated.
-	 * @param	{Function}		callback	The callback function.
+	 * @param	{Object[]}	array		The array to be iterated.
+	 * @param	{Function}	callback	The callback function.
 	 */
 	forEach: function(array, callback) {
 		var i, length = array.length;
