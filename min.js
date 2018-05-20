@@ -466,17 +466,17 @@ var min = {
 			 */
 			xhr: function(url, callback, context, method) {
 				typeof GM_xmlhttpRequest === "undefined" ? error("GM_xmlhttpRequest") : GM_xmlhttpRequest({
-						method: method || "GET",
-						url: url,
-						context: context,
-						onload: function(responseDetails) {
-								var doc = document.createElement("div");
+					method: method || "GET",
+					url: url,
+					context: context,
+					onload: function(responseDetails) {
+						var doc = document.createElement("div");
 
-								doc.innerHTML = responseDetails.responseText;
+						doc.innerHTML = responseDetails.responseText;
 
-								callback(doc, responseDetails.context, responseDetails.finalUrl);
-							}
-					});
+						callback(doc, responseDetails.context, responseDetails.finalUrl);
+					}
+				});
 			}
 		};
 	})(),
