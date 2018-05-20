@@ -1,7 +1,5 @@
 /**
  * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
- * @author	Iulian Onofrei
- * @version	13
  * @type	{Object}
  */
 var min = {
