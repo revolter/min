@@ -14,13 +14,13 @@ var min = {
 		 * Constant used for get methods to return all the matching nodes.
 		 * @constant
 		 * @static
-		 * @type	{Number}
+		 * @type	{number}
 		 */
 		ALL: -1,
 
 		/**
 		 * Returns the node by the given id.
-		 * @param	{Number}		id		The id of the node.
+		 * @param	{number}		id		The id of the node.
 		 * @return	{HTMLElement}			The node with the given id.
 		 */
 		getById: function(id) {
@@ -29,8 +29,8 @@ var min = {
 
 		/**
 		 * Returns the node or the nodes by the given class name.
-		 * @param	{String}							className	The class name of the node.
-		 * @param	{Number}							[index]		Optional position of the node in the array of those found (defaults to the first one).
+		 * @param	{string}							className	The class name of the node.
+		 * @param	{number}							[index]		Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}						[scope]		Optional root node in which to search.
 		 * @return	{HTMLElement, HTMLCollection, null}				The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
 		 */
@@ -46,8 +46,8 @@ var min = {
 
 		/**
 		 * Returns the node or the nodes by the given tag name.
-		 * @param	{String}							tagName	The tag name of the node.
-		 * @param	{Number}							[index]	Optional position of the node in the array of those found (defaults to the first one).
+		 * @param	{string}							tagName	The tag name of the node.
+		 * @param	{number}							[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}						[scope]	Optional root node in which to search.
 		 * @return	{HTMLElement, HTMLCollection, null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
 		 */
@@ -63,8 +63,8 @@ var min = {
 
 		/**
 		 * Returns the node or the nodes by the given css query.
-		 * @param	{String}								query	The query string for searching the node.
-		 * @param	{Number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
+		 * @param	{string}								query	The query string for searching the node.
+		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
 		 * @return	{HTMLElement, Array[HTMLElement], null}			The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
 		 */
@@ -82,8 +82,8 @@ var min = {
 
 		/**
 		 * Returns the node or the nodes by the given xPath location.
-		 * @param	{String}								xPath	The xPath location the node.
-		 * @param	{Number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
+		 * @param	{string}								xPath	The xPath location the node.
+		 * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
 		 * @param	{HTMLElement}							[scope]	Optional root node in which to search.
 		 * @return	{HTMLElement, Array[HTMLElement], null}			The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
 		 */
@@ -111,8 +111,8 @@ var min = {
 
 		/**
 		 * Returns the node or the nodes by the given attribute name and value.
-		 * @param	{String}		propertyName	The attribute name of the node.
-		 * @param	{String}		value			The value of the attribute.
+		 * @param	{string}		propertyName	The attribute name of the node.
+		 * @param	{string}		value			The value of the attribute.
 		 * @return	{HTMLElement}					The node with the given attribute name and value.
 		 */
 		getByMeta: function(propertyName, value) {
@@ -121,7 +121,7 @@ var min = {
 
 		/**
 		 * Creates an HTMLElement node.
-		 * @param	{String}		tagName			The tag name of the node.
+		 * @param	{string}		tagName			The tag name of the node.
 		 * @param	{Object}		[attributes]	Optional attributes for the node.
 		 * @return	{HTMLElement}					The requested node.
 		 */
@@ -179,7 +179,7 @@ var min = {
 		/**
 		 * Removes a list of nodes.
 		 * @param	{Function}								getter	Getter function for the node.
-		 * @param	{String, Array[String], HTMLElement}	params	Parameter or parameters needed for the getter.
+		 * @param	{string, Array[string], HTMLElement}	params	Parameter or parameters needed for the getter.
 		 * 				or
 		 * @param	{HTMLElement}							...		The list of nodes to be removed.
 		 */
@@ -242,9 +242,9 @@ var min = {
 		/**
 		 * Registers a function to be called when a node is first inserted in the DOM.
 		 * @param	{Function}				getter		Getter function for the node.
-		 * @param	{String, Array[String]}	params		Parameter or parameters needed for the getter.
+		 * @param	{string, Array[string]}	params		Parameter or parameters needed for the getter.
 		 * @param	{Function}				callback	The callback function.
-		 * @param	{Boolean}				diconnect	Set to false to prevent the observer to disconnect after the node is found.
+		 * @param	{boolean}				diconnect	Set to false to prevent the observer to disconnect after the node is found.
 		 */
 		onNodeExists: function(getter, params, callback, disconnect) {
 			params = params instanceof Array ? params : [params];
@@ -268,8 +268,8 @@ var min = {
 		/**
 		 * Registers a function to be called when some nodes are first inserted in the DOM.
 		 * @param	{Object}	args		Object containing the rules for retrieving the nodes, containing the keys:
-		 * 										- {Function} getter, {Array[String]} rules
-		 * 										- {Array[Array[String]]} rules
+		 * 										- {Function} getter, {Array[string]} rules
+		 * 										- {Array[Array[string]]} rules
 		 * @param	{Function}	callback	The callback function.
 		 */
 		onNodesExist: function(args, callback) {
@@ -328,7 +328,7 @@ var min = {
 		var
 			/**
 			 * Prints error message to the console about missing @grant.
-			 * @param	{String}	name	The name of the grant.
+			 * @param	{string}	name	The name of the grant.
 			 * @return	{Object}
 			 */
 			error = function(name) {
@@ -340,8 +340,8 @@ var min = {
 		return {
 			/**
 			 * Retrieves a stored entry value.
-			 * @param	{String}	name	The name of the entry.
-			 * @return	{String}			The entry's value or empty string.
+			 * @param	{string}	name	The name of the entry.
+			 * @return	{string}			The entry's value or empty string.
 			 */
 			get: function(name) {
 				return JSON.parse(typeof GM_getValue === "undefined" ? error("GM_getValue") : GM_getValue(name, "{}"));
@@ -349,8 +349,8 @@ var min = {
 
 			/**
 			 * Stores an entry.
-			 * @param	{String}	name	The name of the entry.
-			 * @param	{String}	value	The value of the entry.
+			 * @param	{string}	name	The name of the entry.
+			 * @param	{string}	value	The value of the entry.
 			 */
 			set: function(name, value) {
 				typeof GM_setValue === "undefined" ? error("GM_setValue") : GM_setValue(name, JSON.stringify(value));
@@ -358,8 +358,8 @@ var min = {
 
 			/**
 			 * Appends an item to the stored entry's value.
-			 * @param	{String}	name	The name of the entry.
-			 * @param	{String}	value	The item to be appended.
+			 * @param	{string}	name	The name of the entry.
+			 * @param	{string}	value	The item to be appended.
 			 */
 			add: function(name, value) {
 				var entry = this.get(name);
@@ -375,8 +375,8 @@ var min = {
 
 			/**
 			 * Removes an item from the stored entry's value.
-			 * @param	{String}	name	The name of the entry.
-			 * @param	{String}	value	The item to be removed.
+			 * @param	{string}	name	The name of the entry.
+			 * @param	{string}	value	The item to be removed.
 			 */
 			remove: function(name, value) {
 				var entry = this.get(name);
@@ -394,7 +394,7 @@ var min = {
 
 			/*
 			 * Removes all the items from the stored entry's value.
-			 * @param	{String}	name	The name of the entry.
+			 * @param	{string}	name	The name of the entry.
 			 */
 			clear: function(name) {
 				var entry = this.get(name);
@@ -412,9 +412,9 @@ var min = {
 
 			/**
 			 * Checks if the stored entry's value contains an item.
-			 * @param	{String}	name	The name of the entry.
-			 * @param	{String}	value	The item to be searched.
-			 * @return	{Boolean}			Indicates if the item exists.
+			 * @param	{string}	name	The name of the entry.
+			 * @param	{string}	value	The item to be searched.
+			 * @return	{boolean}			Indicates if the item exists.
 			 */
 			contains: function(name, value) {
 				var entry = this.get(name);
@@ -434,8 +434,8 @@ var min = {
 
 			/**
 			 * Reads content from a resource file.
-			 * @param	{String}	name	The resource name.
-			 * @return	{String}			The content of the resource file.
+			 * @param	{string}	name	The resource name.
+			 * @return	{string}			The content of the resource file.
 			 */
 			read: function(name) {
 				return typeof GM_getResourceText === "undefined" ? error("GM_getResourceText") : GM_getResourceText(name);
@@ -463,10 +463,10 @@ var min = {
 
 			/**
 			 * Makes an XMLHttpRequest and returns the text response.
-			 * @param	{String}	url			The url of the request.
+			 * @param	{string}	url			The url of the request.
 			 * @param	{Function}	callback	The callback function.
 			 * @param	{Object}	[context]	Optional object to be passed to the callback function.
-			 * @param	{String}	[method]	Optional request method (defaults to "GET").
+			 * @param	{string}	[method]	Optional request method (defaults to "GET").
 			 */
 			xhr: function(url, callback, context, method) {
 				typeof GM_xmlhttpRequest === "undefined" ? error("GM_xmlhttpRequest") : GM_xmlhttpRequest({
@@ -528,8 +528,8 @@ var min = {
 
 	/**
 	 * Checks if current location is on given host.
-	 * @param	{String}	hostName	The hostname to test against.
-	 * @return	{Boolean}				Indicates if the location is on host.
+	 * @param	{string}	hostName	The hostname to test against.
+	 * @return	{boolean}				Indicates if the location is on host.
 	 */
 	isOnWebsite: function(hostName) {
 		return window.self === window.top && window.location.hostname.indexOf(hostName) !== -1;
@@ -537,9 +537,9 @@ var min = {
 
 	/**
 	 * Checks if current location is on given path.
-	 * @param	{String, RegExp}	path	The path to test against or a regular expression to test it.
-	 * @param	{Boolean}			exact	Pass true to match the exact path.
-	 * @return	{Boolean}					Indicates if the location is on path.
+	 * @param	{string, RegExp}	path	The path to test against or a regular expression to test it.
+	 * @param	{boolean}			exact	Pass true to match the exact path.
+	 * @return	{boolean}					Indicates if the location is on path.
 	 */
 	isOnPath: function(path, exact) {
 		var currentPath = window.location.pathname;
@@ -553,7 +553,7 @@ var min = {
 
 	/**
 	 * Checks if running from an iframe.
-	 * @return	{Boolean}	Indicates if the script is running from an iframe.
+	 * @return	{boolean}	Indicates if the script is running from an iframe.
 	 */
 	isOnIframe: function() {
 		return !(window.self === window.top);
