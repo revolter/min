@@ -28,8 +28,8 @@ var min = {
         /**
          * Returns the node or the nodes by the given class name.
          * @param {string} className - The class name of the node.
-         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
-         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope=document] - Optional root node in which to search.
          * @return {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
          */
         getByClassName: function (className, index, scope) {
@@ -45,8 +45,8 @@ var min = {
         /**
          * Returns the node or the nodes by the given tag name.
          * @param {string} tagName - The tag name of the node.
-         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
-         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope=document] - Optional root node in which to search.
          * @return {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
          */
         getByTagName: function (tagName, index, scope) {
@@ -62,8 +62,8 @@ var min = {
         /**
          * Returns the node or the nodes by the given css query.
          * @param {string} query - The query string for searching the node.
-         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
-         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope=document] - Optional root node in which to search.
          * @return {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
          */
         getByQuery: function (query, index, scope) {
@@ -81,8 +81,8 @@ var min = {
         /**
          * Returns the node or the nodes by the given xPath location.
          * @param {string} xPath - The xPath location the node.
-         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
-         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope=document] - Optional root node in which to search.
          * @return {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
          */
         getByXPath: function (xPath, index, scope) {
@@ -120,7 +120,7 @@ var min = {
         /**
          * Creates an HTMLElement node.
          * @param {string} tagName - The tag name of the node.
-         * @param {Object} [attributes] - Optional attributes for the node.
+         * @param {Object} [attributes=null] - Optional attributes for the node.
          * @return {HTMLElement} The requested node.
          */
         create: function (tagName, attributes) {
@@ -231,8 +231,8 @@ var min = {
         /**
          * Adds a MutationObserver with a given callback.
          * @param {Function} callback - The callback function.
-         * @param {HTMLElement} [root] - Optional root node on which to observe mutations.
-         * @param {Object} [options] - Optional parameters to pass to the observer.
+         * @param {HTMLElement} [root=document.body] - Optional root node on which to observe mutations.
+         * @param {Object} [options={childList: true, subtree: true}] - Optional parameters to pass to the observer.
          */
         addObserver: function (callback, root, options) {
             new MutationObserver(callback).observe(root || document.body, options || {
@@ -246,7 +246,7 @@ var min = {
          * @param {Function} getter - Getter function for the node.
          * @param {string|string[]} params - Parameter or parameters needed for the getter.
          * @param {Function} callback - The callback function.
-         * @param {boolean} disconnect - Set to false to prevent the observer to disconnect after the node is found.
+         * @param {boolean} [disconnect=true] - Set to false to prevent the observer to disconnect after the node is found.
          */
         onNodeExists: function (getter, params, callback, disconnect) {
             params = params instanceof Array ? params : [params];
@@ -313,7 +313,7 @@ var min = {
         /**
          * Registers a function to be called when nodes are inserted in the DOM.
          * @param {Function} callback - The callback function.
-         * @param {HTMLElement} [root] - Optional root node on which to observe mutations.
+         * @param {HTMLElement} [root=document.body] - Optional root node on which to observe mutations.
          */
         onNodeInserted: function (callback, root) {
             this.addObserver(function (mutations) {
@@ -469,8 +469,8 @@ var min = {
              * Makes an XMLHttpRequest and returns the text response.
              * @param {string} url - The url of the request.
              * @param {Function} callback - The callback function.
-             * @param {Object} [context] - Optional object to be passed to the callback function.
-             * @param {string} [method] - Optional request method (defaults to "GET").
+             * @param {Object} [context=null] - Optional object to be passed to the callback function.
+             * @param {string} [method="GET"] - Optional request method (defaults to "GET").
              */
             xhr: function (url, callback, context, method) {
                 typeof GM_xmlhttpRequest === "undefined" ? error("GM_xmlhttpRequest") : GM_xmlhttpRequest({
@@ -536,7 +536,7 @@ var min = {
     /**
      * Checks if current location is on given path.
      * @param {string|RegExp} path - The path to test against or a regular expression to test it.
-     * @param {boolean} exact - Pass true to match the exact path.
+     * @param {boolean} [exact=false] - Pass true to match the exact path.
      * @return {boolean} Indicates if the location is on path.
      */
     isOnPath: function (path, exact) {
