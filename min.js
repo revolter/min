@@ -211,8 +211,8 @@ var min = {
 
 		/**
 		 * Inserts a node before another existing one.
-		 * @param	{HTMLElement}	element		The node to be inserted.
-		 * @param	{HTMLElement}	reference	The node before which the element will be inserted.
+		 * @param	{HTMLElement}	node		The node to be inserted.
+		 * @param	{HTMLElement}	reference	The node before which the specified node will be inserted.
 		 */
 		insertBefore: function(node, reference) {
 			reference.parentNode && reference.parentNode.insertBefore(node, reference);
@@ -220,8 +220,8 @@ var min = {
 
 		/**
 		 * Inserts a node after another existing one.
-		 * @param	{HTMLElement}	element		The node to be inserted.
-		 * @param	{HTMLElement}	reference	The node after which the element will be inserted.
+		 * @param	{HTMLElement}	node		The node to be inserted.
+		 * @param	{HTMLElement}	reference	The node after which the specified node will be inserted.
 		 */
 		insertAfter: function(node, reference) {
 			reference.parentNode && reference.nextSibling && reference.parentNode.insertBefore(node, reference.nextSibling);
