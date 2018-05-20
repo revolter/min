@@ -176,19 +176,17 @@ var min = {
 
 		/**
 		 * Removes a list of nodes.
-		 * @param	{Function}						getter	Getter function for the node.
-		 * @param	{string|string[]|HTMLElement}	params	Parameter or parameters needed for the getter.
-		 * 				or
-		 * @param	{HTMLElement}							The list of nodes to be removed.
+		 * @param	{Function|HTMLElement[]}		getterOrNodes	Getter function for the node or a list of nodes to be removed.
+		 * @param	{string|string[]|HTMLElement}	[params]		Parameter or parameters needed for the getter.
 		 */
-		removeNodes: function(getter, params) {
+		removeNodes: function(getterOrNodes, params) {
 			var nodes;
 
-			if(getter instanceof Function) {
+			if(getterOrNodes instanceof Function) {
 				params = params instanceof Array ? params : [params];
 
 				params = params.map(function(param) {
-					return getter.call(min.dom, param);
+					return getterOrNodes.call(min.dom, param);
 				});
 
 				nodes = [];
