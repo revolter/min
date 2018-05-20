@@ -180,7 +180,7 @@ var min = {
         /**
          * Removes a list of nodes.
          * @param {Function|HTMLElement[]} getterOrNodes - Getter function for the node or a list of nodes to be removed.
-         * @param {string|string[]|HTMLElement} [params] - Parameter or parameters needed for the getter.
+         * @param {string|string[]|HTMLElement} [params] - Parameter or parameters needed for the getter. Optional if a list of nodes is passed for `getterOrNodes`.
          */
         removeNodes: function (getterOrNodes, params) {
             var nodes;
@@ -269,9 +269,15 @@ var min = {
 
         /**
          * Registers a function to be called when some nodes are first inserted in the DOM.
-         * @param {Object} args - Object containing the rules for retrieving the nodes, containing the keys:
-         *  - {Function} getter, {string[]} rules
-         *  - {string[][]} rules
+         *
+         * The `args` must contains these keys:
+         * - `{Function}` _getter_
+         * - `{string[]}` _params_
+         *
+         * or
+         *
+         * - `{string[][]}` _rules_
+         * @param {Object} args - Object containing the rules for retrieving the nodes.
          * @param {Function} callback - The callback function.
          */
         onNodesExist: function (args, callback) {
@@ -536,7 +542,7 @@ var min = {
     /**
      * Checks if current location is on given path.
      * @param {string|RegExp} path - The path to test against or a regular expression to test it.
-     * @param {boolean} [exact=false] - Pass true to match the exact path.
+     * @param {boolean} [exact=false] - Pass `true` to match the exact path.
      * @return {boolean} Indicates if the location is on path.
      */
     isOnPath: function (path, exact) {
