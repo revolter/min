@@ -33,7 +33,7 @@ var min = {
 		 * @return	{HTMLElement|HTMLCollection|null}				The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
 		 */
 		getByClassName: function(className, index, scope) {
-			if(scope === undefined || scope instanceof HTMLElement) {
+			if (scope === undefined || scope instanceof HTMLElement) {
 				var nodes = (scope || document).getElementsByClassName(className);
 
 				return index === this.ALL ? nodes : nodes[index || 0];
@@ -50,7 +50,7 @@ var min = {
 		 * @return	{HTMLElement|HTMLCollection|null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
 		 */
 		getByTagName: function(tagName, index, scope) {
-			if(scope === undefined || scope instanceof HTMLElement) {
+			if (scope === undefined || scope instanceof HTMLElement) {
 				var nodes = (scope || document).getElementsByTagName(tagName);
 
 				return index === this.ALL ? nodes : nodes[index || 0];
@@ -67,7 +67,7 @@ var min = {
 		 * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
 		 */
 		getByQuery: function(query, index, scope) {
-			if(scope === undefined || scope instanceof HTMLElement) {
+			if (scope === undefined || scope instanceof HTMLElement) {
 				var
 					single = (index === undefined || index === 0),
 					nodes = (scope || document)[single ? "querySelector" : "querySelectorAll"](query);
@@ -86,7 +86,7 @@ var min = {
 		 * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
 		 */
 		getByXPath: function(xPath, index, scope) {
-			if(scope === undefined || scope instanceof HTMLElement) {
+			if (scope === undefined || scope instanceof HTMLElement) {
 				scope && scope instanceof HTMLElement && (xPath = "." + xPath);
 
 				var
@@ -94,7 +94,7 @@ var min = {
 					toArray = function(xPathResult) {
 						var i, length = xPathResult.snapshotLength, array = [];
 
-						for(i = 0; i < length; i++) {
+						for (i = 0; i < length; i++) {
 							array.push(xPathResult.snapshotItem(i));
 						}
 
@@ -124,16 +124,19 @@ var min = {
 		 * @return	{HTMLElement}					The requested node.
 		 */
 		create: function(tagName, attributes) {
-			var attributeName, attributeValue, property, style = "", node = document.createElement(tagName);
+			var
+				attributeName, attributeValue,
+				property, style = "",
+				node = document.createElement(tagName);
 
-			if(attributes) {
-				for(attributeName in attributes) {
+			if (attributes) {
+				for (attributeName in attributes) {
 					attributeValue = attributes[attributeName];
 
-					if(typeof attributeValue === "string") {
+					if (typeof attributeValue === "string") {
 						node.setAttribute(attributeName, attributeValue);
 					} else {
-						for(property in attributeValue) {
+						for (property in attributeValue) {
 							style += property + ": " + attributeValue[property] + " !important;";
 						}
 
@@ -182,7 +185,7 @@ var min = {
 		removeNodes: function(getterOrNodes, params) {
 			var nodes;
 
-			if(getterOrNodes instanceof Function) {
+			if (getterOrNodes instanceof Function) {
 				params = params instanceof Array ? params : [params];
 
 				params = params.map(function(param) {
@@ -192,7 +195,7 @@ var min = {
 				nodes = [];
 
 				min.forEach(params, function(param) {
-					if(param.length) {
+					if (param.length) {
 						min.forEach(param, function(node) {
 							nodes.push(node);
 						});
@@ -232,7 +235,10 @@ var min = {
 		 * @param	{Object}		[options]	Optional parameters to pass to the observer.
 		 */
 		addObserver: function(callback, root, options) {
-			new MutationObserver(callback).observe(root || document.body, options || { childList: true, subtree: true });
+			new MutationObserver(callback).observe(root || document.body, options || {
+				childList: true,
+				subtree: true
+			});
 		},
 
 		/**
@@ -246,11 +252,11 @@ var min = {
 			params = params instanceof Array ? params : [params];
 			disconnect = disconnect === undefined ? true : disconnect;
 
-			if(getter.apply(min.dom, params)) {
+			if (getter.apply(min.dom, params)) {
 				callback(getter.apply(min.dom, params));
 			} else {
 				this.addObserver(function() {
-					if(getter.apply(min.dom, params)) {
+					if (getter.apply(min.dom, params)) {
 						if (disconnect) {
 							this.disconnect();
 						}
@@ -276,13 +282,13 @@ var min = {
 					min.dom.onNodeExists(getter, param, function(node) {
 						nodes[param] = node;
 
-						if(++count === length) {
+						if (++count === length) {
 							callback(nodes);
 						}
 					});
 				};
 
-			if(args.getter) {
+			if (args.getter) {
 				getter = args.getter;
 				params = args.params;
 				length = params.length;
@@ -291,7 +297,10 @@ var min = {
 					waitForNode(getter, param, length);
 				});
 			} else {
-				var param, rules = args.rules, length = rules.length;
+				var
+					param,
+					rules = args.rules,
+					length = rules.length;
 
 				min.forEach(rules, function(rule) {
 					getter = rule[0];
@@ -328,7 +337,7 @@ var min = {
 			 * @return	{Object}
 			 */
 			error = function(name) {
-				console.error("Forgot to @grant " + name +"!");
+				console.error("Forgot to @grant " + name + "!");
 
 				return null;
 			};
@@ -360,7 +369,7 @@ var min = {
 			add: function(name, value) {
 				var entry = this.get(name);
 
-				if(entry.content) {
+				if (entry.content) {
 					entry.content.push(value);
 				} else {
 					entry[value.key] = value.value;
@@ -377,7 +386,7 @@ var min = {
 			remove: function(name, value) {
 				var entry = this.get(name);
 
-				if(entry.content) {
+				if (entry.content) {
 					var index = entry.content.indexOf(value);
 
 					index !== -1 && entry.content.splice(index, 1);
@@ -395,7 +404,7 @@ var min = {
 			clear: function(name) {
 				var entry = this.get(name);
 
-				if(entry.content) {
+				if (entry.content) {
 					entry = {
 						"content": []
 					};
@@ -415,11 +424,11 @@ var min = {
 			contains: function(name, value) {
 				var entry = this.get(name);
 
-				if(entry.content) {
+				if (entry.content) {
 					return entry.content.indexOf(value) !== -1;
 				} else {
 					min.forEach(Object.keys(entry), function(key) {
-						if(entry[key] === value) {
+						if (entry[key] === value) {
 							return true;
 						}
 					});
@@ -444,10 +453,10 @@ var min = {
 			style: function(styles) {
 				var cssText = "";
 
-				for(style in styles) {
+				for (style in styles) {
 					cssText += style + " {";
 
-					for(property in styles[style]) {
+					for (property in styles[style]) {
 						cssText += property + ": " + styles[style][property] + " !important; ";
 					}
 
@@ -511,7 +520,7 @@ var min = {
 	forEach: function(array, callback) {
 		var i, length = array.length;
 
-		for(i = 0; i < length; i++) {
+		for (i = 0; i < length; i++) {
 			callback(array[i], i);
 		}
 	},
@@ -534,7 +543,7 @@ var min = {
 	isOnPath: function(path, exact) {
 		var currentPath = window.location.pathname;
 
-		if(!this.isOnIframe()) {
+		if (!this.isOnIframe()) {
 			return path instanceof RegExp ? path.test(currentPath) : (exact ? currentPath === path : currentPath.indexOf(path) !== -1);
 		} else {
 			return false;
