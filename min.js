@@ -1,25 +1,25 @@
 /**
  * Collection of functions used for DOM manipulations in Userscripts.
- * @type	{Object}
+ * @type {Object}
  */
 var min = {
     /**
      * Collection of DOM manipulation functions.
-     * @type	{Object}
+     * @type {Object}
      */
     dom: {
         /**
          * Constant used for get methods to return all the matching nodes.
          * @constant
          * @static
-         * @type	{number}
+         * @type {number}
          */
         ALL: -1,
 
         /**
          * Returns the node by the given id.
-         * @param	{number}		id		The id of the node.
-         * @return	{HTMLElement}			The node with the given id.
+         * @param {number} id - The id of the node.
+         * @return {HTMLElement} The node with the given id.
          */
         getById: function(id) {
             return document.getElementById(id);
@@ -27,10 +27,10 @@ var min = {
 
         /**
          * Returns the node or the nodes by the given class name.
-         * @param	{string}							className	The class name of the node.
-         * @param	{number}							[index]		Optional position of the node in the array of those found (defaults to the first one).
-         * @param	{HTMLElement}						[scope]		Optional root node in which to search.
-         * @return	{HTMLElement|HTMLCollection|null}				The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
+         * @param {string} className - The class name of the node.
+         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @return {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
          */
         getByClassName: function(className, index, scope) {
             if (scope === undefined || scope instanceof HTMLElement) {
@@ -44,10 +44,10 @@ var min = {
 
         /**
          * Returns the node or the nodes by the given tag name.
-         * @param	{string}							tagName	The tag name of the node.
-         * @param	{number}							[index]	Optional position of the node in the array of those found (defaults to the first one).
-         * @param	{HTMLElement}						[scope]	Optional root node in which to search.
-         * @return	{HTMLElement|HTMLCollection|null}			The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
+         * @param {string} tagName - The tag name of the node.
+         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @return {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
          */
         getByTagName: function(tagName, index, scope) {
             if (scope === undefined || scope instanceof HTMLElement) {
@@ -61,10 +61,10 @@ var min = {
 
         /**
          * Returns the node or the nodes by the given css query.
-         * @param	{string}								query	The query string for searching the node.
-         * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
-         * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-         * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
+         * @param {string} query - The query string for searching the node.
+         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @return {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
          */
         getByQuery: function(query, index, scope) {
             if (scope === undefined || scope instanceof HTMLElement) {
@@ -80,10 +80,10 @@ var min = {
 
         /**
          * Returns the node or the nodes by the given xPath location.
-         * @param	{string}								xPath	The xPath location the node.
-         * @param	{number}								[index]	Optional position of the node in the array of those found (defaults to the first one).
-         * @param	{HTMLElement}							[scope]	Optional root node in which to search.
-         * @return	{HTMLElement|HTMLElement[]|null}				The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
+         * @param {string} xPath - The xPath location the node.
+         * @param {number} [index] - Optional position of the node in the array of those found (defaults to the first one).
+         * @param {HTMLElement} [scope] - Optional root node in which to search.
+         * @return {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
          */
         getByXPath: function(xPath, index, scope) {
             if (scope === undefined || scope instanceof HTMLElement) {
@@ -109,9 +109,9 @@ var min = {
 
         /**
          * Returns the node or the nodes by the given attribute name and value.
-         * @param	{string}		propertyName	The attribute name of the node.
-         * @param	{string}		value			The value of the attribute.
-         * @return	{HTMLElement}					The node with the given attribute name and value.
+         * @param {string} propertyName - The attribute name of the node.
+         * @param {string} value - The value of the attribute.
+         * @return {HTMLElement} The node with the given attribute name and value.
          */
         getByMeta: function(propertyName, value) {
             return this.getByXPath("//head/meta[@" + propertyName + " = '" + value + "']");
@@ -119,9 +119,9 @@ var min = {
 
         /**
          * Creates an HTMLElement node.
-         * @param	{string}		tagName			The tag name of the node.
-         * @param	{Object}		[attributes]	Optional attributes for the node.
-         * @return	{HTMLElement}					The requested node.
+         * @param {string} tagName - The tag name of the node.
+         * @param {Object} [attributes] - Optional attributes for the node.
+         * @return {HTMLElement} The requested node.
          */
         create: function(tagName, attributes) {
             var
@@ -150,8 +150,8 @@ var min = {
 
         /**
          * Adds a css style to a node.
-         * @param	{HTMLElement}		node	The node for which to add the style.
-         * @param	{Object|Object[]}	styles	An object or an array of objects with css property and value pairs.
+         * @param {HTMLElement} node - The node for which to add the style.
+         * @param {Object|Object[]} styles - An object or an array of objects with css property and value pairs.
          */
         style: function(node, styles) {
             var
@@ -171,7 +171,7 @@ var min = {
 
         /**
          * Removes a node.
-         * @param	{HTMLElement}	node	The node to be removed.
+         * @param {HTMLElement} node - The node to be removed.
          */
         removeNode: function(node) {
             node && node.parentNode && node.parentNode.removeChild(node);
@@ -179,8 +179,8 @@ var min = {
 
         /**
          * Removes a list of nodes.
-         * @param	{Function|HTMLElement[]}		getterOrNodes	Getter function for the node or a list of nodes to be removed.
-         * @param	{string|string[]|HTMLElement}	[params]		Parameter or parameters needed for the getter.
+         * @param {Function|HTMLElement[]} getterOrNodes - Getter function for the node or a list of nodes to be removed.
+         * @param {string|string[]|HTMLElement} [params] - Parameter or parameters needed for the getter.
          */
         removeNodes: function(getterOrNodes, params) {
             var nodes;
@@ -212,8 +212,8 @@ var min = {
 
         /**
          * Inserts a node before another existing one.
-         * @param	{HTMLElement}	node		The node to be inserted.
-         * @param	{HTMLElement}	reference	The node before which the specified node will be inserted.
+         * @param {HTMLElement} node - The node to be inserted.
+         * @param {HTMLElement} reference - The node before which the specified node will be inserted.
          */
         insertBefore: function(node, reference) {
             reference.parentNode && reference.parentNode.insertBefore(node, reference);
@@ -221,8 +221,8 @@ var min = {
 
         /**
          * Inserts a node after another existing one.
-         * @param	{HTMLElement}	node		The node to be inserted.
-         * @param	{HTMLElement}	reference	The node after which the specified node will be inserted.
+         * @param {HTMLElement} node - The node to be inserted.
+         * @param {HTMLElement} reference - The node after which the specified node will be inserted.
          */
         insertAfter: function(node, reference) {
             reference.parentNode && reference.nextSibling && reference.parentNode.insertBefore(node, reference.nextSibling);
@@ -230,9 +230,9 @@ var min = {
 
         /**
          * Adds a MutationObserver with a given callback.
-         * @param	{Function}		callback	The callback function.
-         * @param	{HTMLElement}	[root]		Optional root node on which to observe mutations.
-         * @param	{Object}		[options]	Optional parameters to pass to the observer.
+         * @param {Function} callback - The callback function.
+         * @param {HTMLElement} [root] - Optional root node on which to observe mutations.
+         * @param {Object} [options] - Optional parameters to pass to the observer.
          */
         addObserver: function(callback, root, options) {
             new MutationObserver(callback).observe(root || document.body, options || {
@@ -243,10 +243,10 @@ var min = {
 
         /**
          * Registers a function to be called when a node is first inserted in the DOM.
-         * @param	{Function}			getter		Getter function for the node.
-         * @param	{string|string[]}	params		Parameter or parameters needed for the getter.
-         * @param	{Function}			callback	The callback function.
-         * @param	{boolean}			disconnect	Set to false to prevent the observer to disconnect after the node is found.
+         * @param {Function} getter - Getter function for the node.
+         * @param {string|string[]} params - Parameter or parameters needed for the getter.
+         * @param {Function} callback - The callback function.
+         * @param {boolean} disconnect - Set to false to prevent the observer to disconnect after the node is found.
          */
         onNodeExists: function(getter, params, callback, disconnect) {
             params = params instanceof Array ? params : [params];
@@ -269,10 +269,10 @@ var min = {
 
         /**
          * Registers a function to be called when some nodes are first inserted in the DOM.
-         * @param	{Object}	args		Object containing the rules for retrieving the nodes, containing the keys:
-         * 										- {Function} getter, {string[]} rules
-         * 										- {string[][]} rules
-         * @param	{Function}	callback	The callback function.
+         * @param {Object} args - Object containing the rules for retrieving the nodes, containing the keys:
+         *  - {Function} getter, {string[]} rules
+         *  - {string[][]} rules
+         * @param {Function} callback - The callback function.
          */
         onNodesExist: function(args, callback) {
             var
@@ -313,8 +313,8 @@ var min = {
 
         /**
          * Registers a function to be called when nodes are inserted in the DOM.
-         * @param	{Function}		callback	The callback function.
-         * @param	{HTMLElement}	[root]		Optional root node on which to observe mutations.
+         * @param {Function} callback - The callback function.
+         * @param {HTMLElement} [root] - Optional root node on which to observe mutations.
          */
         onNodeInserted: function(callback, root) {
             this.addObserver(function(mutations) {
@@ -327,14 +327,14 @@ var min = {
 
     /**
      * Collection of GreaseMonkey specific functions.
-     * @return	{Object}	The collection of functions.
+     * @return {Object} The collection of functions.
      */
     gm: (function() {
         var
             /**
              * Prints error message to the console about missing @grant.
-             * @param	{string}	name	The name of the grant.
-             * @return	{Object}
+             * @param {string} name - The name of the grant.
+             * @return {Object}
              */
             error = function(name) {
                 console.error("Forgot to @grant " + name + "!");
@@ -345,8 +345,8 @@ var min = {
         return {
             /**
              * Retrieves a stored entry value.
-             * @param	{string}	name	The name of the entry.
-             * @return	{string}			The entry's value or empty string.
+             * @param {string} name - The name of the entry.
+             * @return {string} The entry's value or empty string.
              */
             get: function(name) {
                 return JSON.parse(typeof GM_getValue === "undefined" ? error("GM_getValue") : GM_getValue(name, "{}"));
@@ -354,8 +354,8 @@ var min = {
 
             /**
              * Stores an entry.
-             * @param	{string}	name	The name of the entry.
-             * @param	{string}	value	The value of the entry.
+             * @param {string} name - The name of the entry.
+             * @param {string} value - The value of the entry.
              */
             set: function(name, value) {
                 typeof GM_setValue === "undefined" ? error("GM_setValue") : GM_setValue(name, JSON.stringify(value));
@@ -363,8 +363,8 @@ var min = {
 
             /**
              * Appends an item to the stored entry's value.
-             * @param	{string}	name	The name of the entry.
-             * @param	{string}	value	The item to be appended.
+             * @param {string} name - The name of the entry.
+             * @param {string} value - The item to be appended.
              */
             add: function(name, value) {
                 var entry = this.get(name);
@@ -380,8 +380,8 @@ var min = {
 
             /**
              * Removes an item from the stored entry's value.
-             * @param	{string}	name	The name of the entry.
-             * @param	{string}	value	The item to be removed.
+             * @param {string} name - The name of the entry.
+             * @param {string} value - The item to be removed.
              */
             remove: function(name, value) {
                 var entry = this.get(name);
@@ -399,7 +399,7 @@ var min = {
 
             /*
              * Removes all the items from the stored entry's value.
-             * @param	{string}	name	The name of the entry.
+             * @param {string} name - The name of the entry.
              */
             clear: function(name) {
                 var entry = this.get(name);
@@ -417,9 +417,9 @@ var min = {
 
             /**
              * Checks if the stored entry's value contains an item.
-             * @param	{string}	name	The name of the entry.
-             * @param	{string}	value	The item to be searched.
-             * @return	{boolean}			Indicates if the item exists.
+             * @param {string} name - The name of the entry.
+             * @param {string} value - The item to be searched.
+             * @return {boolean} Indicates if the item exists.
              */
             contains: function(name, value) {
                 var entry = this.get(name);
@@ -439,8 +439,8 @@ var min = {
 
             /**
              * Reads content from a resource file.
-             * @param	{string}	name	The resource name.
-             * @return	{string}			The content of the resource file.
+             * @param {string} name - The resource name.
+             * @return {string} The content of the resource file.
              */
             read: function(name) {
                 return typeof GM_getResourceText === "undefined" ? error("GM_getResourceText") : GM_getResourceText(name);
@@ -448,7 +448,7 @@ var min = {
 
             /**
              * Adds a css style.
-             * @param	{Object}	styles	An object with selector and style pairs.
+             * @param {Object} styles - An object with selector and style pairs.
              */
             style: function(styles) {
                 var cssText = "";
@@ -468,10 +468,10 @@ var min = {
 
             /**
              * Makes an XMLHttpRequest and returns the text response.
-             * @param	{string}	url			The url of the request.
-             * @param	{Function}	callback	The callback function.
-             * @param	{Object}	[context]	Optional object to be passed to the callback function.
-             * @param	{string}	[method]	Optional request method (defaults to "GET").
+             * @param {string} url - The url of the request.
+             * @param {Function} callback - The callback function.
+             * @param {Object} [context] - Optional object to be passed to the callback function.
+             * @param {string} [method] - Optional request method (defaults to "GET").
              */
             xhr: function(url, callback, context, method) {
                 typeof GM_xmlhttpRequest === "undefined" ? error("GM_xmlhttpRequest") : GM_xmlhttpRequest({
@@ -492,9 +492,9 @@ var min = {
 
     /**
      * Concatenates two collections and returns the result.
-     * @param	{HTMLElement[]|HTMLCollection}	first	The first collection.
-     * @param	{HTMLElement[]|HTMLCollection}	second	The second collection.
-     * @return	{HTMLElement[]}							The resulting array.
+     * @param {HTMLElement[]|HTMLCollection} first - The first collection.
+     * @param {HTMLElement[]|HTMLCollection} second - The second collection.
+     * @return {HTMLElement[]} The resulting array.
      */
     concatenate: function(first, second) {
         first instanceof HTMLCollection && (first = this.toArray(first));
@@ -505,8 +505,8 @@ var min = {
 
     /**
      * Converts an array-like object to an Array.
-     * @param	{Object}		collection	The collection to be converted.
-     * @return	{Object[]}					The resulting array.
+     * @param {Object} collection - The collection to be converted.
+     * @return {Object[]} The resulting array.
      */
     toArray: function(collection) {
         return Array.prototype.slice.call(collection);
@@ -514,8 +514,8 @@ var min = {
 
     /**
      * Executes a function on elements of an array.
-     * @param	{Object[]}	array		The array to be iterated.
-     * @param	{Function}	callback	The callback function.
+     * @param {Object[]} array - The array to be iterated.
+     * @param {Function} callback - The callback function.
      */
     forEach: function(array, callback) {
         var i, length = array.length;
@@ -527,8 +527,8 @@ var min = {
 
     /**
      * Checks if current location is on given host.
-     * @param	{string}	hostName	The hostname to test against.
-     * @return	{boolean}				Indicates if the location is on host.
+     * @param {string} hostName - The hostname to test against.
+     * @return {boolean} Indicates if the location is on host.
      */
     isOnWebsite: function(hostName) {
         return window.self === window.top && window.location.hostname.indexOf(hostName) !== -1;
@@ -536,9 +536,9 @@ var min = {
 
     /**
      * Checks if current location is on given path.
-     * @param	{string|RegExp}	path	The path to test against or a regular expression to test it.
-     * @param	{boolean}		exact	Pass true to match the exact path.
-     * @return	{boolean}				Indicates if the location is on path.
+     * @param {string|RegExp} path - The path to test against or a regular expression to test it.
+     * @param {boolean} exact - Pass true to match the exact path.
+     * @return {boolean} Indicates if the location is on path.
      */
     isOnPath: function(path, exact) {
         var currentPath = window.location.pathname;
@@ -552,7 +552,7 @@ var min = {
 
     /**
      * Checks if running from an iframe.
-     * @return	{boolean}	Indicates if the script is running from an iframe.
+     * @return {boolean} Indicates if the script is running from an iframe.
      */
     isOnIframe: function() {
         return !(window.self === window.top);
