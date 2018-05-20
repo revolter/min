@@ -154,9 +154,9 @@ var min = {
          * @param {Object|Object[]} styles - An object or an array of objects with css property and value pairs.
          */
         style: function (node, styles) {
-            var
-                cssText = "",
-                styles = styles instanceof Array ? styles : [styles];
+            var cssText = "";
+
+            styles = styles instanceof Array ? styles : [styles];
 
             min.forEach(styles, function (style) {
                 var
@@ -297,10 +297,9 @@ var min = {
                     waitForNode(getter, param, length);
                 });
             } else {
-                var
-                    param,
-                    rules = args.rules,
-                    length = rules.length;
+                var param, rules = args.rules;
+
+                length = rules.length;
 
                 min.forEach(rules, function (rule) {
                     getter = rule[0];
@@ -451,7 +450,7 @@ var min = {
              * @param {Object} styles - An object with selector and style pairs.
              */
             style: function (styles) {
-                var cssText = "";
+                var style, property, cssText = "";
 
                 for (style in styles) {
                     cssText += style + " {";
@@ -555,6 +554,6 @@ var min = {
      * @return {boolean} Indicates if the script is running from an iframe.
      */
     isOnIframe: function () {
-        return !(window.self === window.top);
+        return window.self !== window.top;
     }
 };
