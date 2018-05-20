@@ -242,7 +242,7 @@ var min = {
 		 * @param	{Function}			getter		Getter function for the node.
 		 * @param	{string|string[]}	params		Parameter or parameters needed for the getter.
 		 * @param	{Function}			callback	The callback function.
-		 * @param	{boolean}			diconnect	Set to false to prevent the observer to disconnect after the node is found.
+		 * @param	{boolean}			disconnect	Set to false to prevent the observer to disconnect after the node is found.
 		 */
 		onNodeExists: function(getter, params, callback, disconnect) {
 			params = params instanceof Array ? params : [params];
