@@ -1,5 +1,5 @@
 /**
- * Collection of functions used for DOM manipulations in GreaseMonkey scripts.
+ * Collection of functions used for DOM manipulations in Userscripts.
  * @type	{Object}
  */
 var min = {
