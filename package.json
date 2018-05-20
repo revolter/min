@@ -19,7 +19,7 @@
     "url": "https://github.com/revolter/min/issues"
   },
   "homepage": "https://github.com/revolter/min#readme",
-  "dependencies": {
+  "devDependencies": {
     "documentation": "^6.3.3"
   }
 }
