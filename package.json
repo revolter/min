@@ -3,6 +3,15 @@
   "version": "13.0.0",
   "description": "Collection of functions used for DOM manipulations in Userscripts",
   "main": "min.js",
+  "scripts": {
+    "lint-code": "jshint min.js",
+    "build-code": "uglifyjs min.js --compress --mangle --output min.min.js",
+
+    "lint-docs": "documentation lint",
+    "build-docs": "documentation readme --section 'Documentation' --quiet",
+
+    "build": "npm run lint-code && npm run build-code && npm run lint-docs && npm run build-docs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/revolter/min.git"
