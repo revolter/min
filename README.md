@@ -18,14 +18,11 @@ Collection of functions used for DOM manipulations in Userscripts.
 #### Table of Contents
 
 -   [min](#min)
-    -   [dom](#dom)
-    -   [gm](#gm)
-    -   [concatenate](#concatenate)
-    -   [toArray](#toarray)
-    -   [forEach](#foreach)
-    -   [isOnWebsite](#isonwebsite)
-    -   [isOnPath](#isonpath)
-    -   [isOnIframe](#isoniframe)
+-   [NOT_FOUND](#not_found)
+-   [EMPTY](#empty)
+-   [FIRST](#first)
+-   [FIRST](#first-1)
+-   [dom](#dom)
 -   [ALL](#all)
 -   [getById](#getbyid)
 -   [getByClassName](#getbyclassname)
@@ -44,14 +41,21 @@ Collection of functions used for DOM manipulations in Userscripts.
 -   [onNodeExists](#onnodeexists)
 -   [onNodesExist](#onnodesexist)
 -   [onNodeInserted](#onnodeinserted)
--   [error](#error)
+-   [gm](#gm)
 -   [get](#get)
 -   [set](#set)
 -   [add](#add)
 -   [remove](#remove)
+-   [clear](#clear)
 -   [contains](#contains)
 -   [read](#read)
 -   [xhr](#xhr)
+-   [concatenate](#concatenate)
+-   [toArray](#toarray)
+-   [forEach](#foreach)
+-   [isOnWebsite](#isonwebsite)
+-   [isOnPath](#isonpath)
+-   [isOnIframe](#isoniframe)
 
 ### min
 
@@ -59,78 +63,39 @@ Collection of functions used for DOM manipulations in Userscripts.
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
-#### dom
+### NOT_FOUND
+
+Constant used for items not found in search operations.
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### EMPTY
+
+Constant used for empty lists.
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### FIRST
+
+Constant used for accessing the first item in a list.
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### FIRST
+
+Constant used for nodes getter methods to return the first matching node.
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+### dom
 
 Collection of DOM manipulation functions.
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
-#### gm
-
-Collection of GreaseMonkey specific functions.
-
-Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of functions.
-
-#### concatenate
-
-Concatenates two collections and returns the result.
-
-**Parameters**
-
--   `first` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | HTMLCollection)** The first collection.
--   `second` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | HTMLCollection)** The second collection.
-
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)>** The resulting array.
-
-#### toArray
-
-Converts an array-like object to an Array.
-
-**Parameters**
-
--   `collection` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection to be converted.
-
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** The resulting array.
-
-#### forEach
-
-Executes a function on elements of an array.
-
-**Parameters**
-
--   `array` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** The array to be iterated.
--   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
-
-#### isOnWebsite
-
-Checks if current location is on given host.
-
-**Parameters**
-
--   `hostName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The hostname to test against.
-
-Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the location is on host.
-
-#### isOnPath
-
-Checks if current location is on given path.
-
-**Parameters**
-
--   `path` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp))** The path to test against or a regular expression to test it.
--   `exact` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Pass `true` to match the exact path. (optional, default `false`)
-
-Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the location is on path.
-
-#### isOnIframe
-
-Checks if running from an iframe.
-
-Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the script is running from an iframe.
-
 ### ALL
 
-Constant used for get methods to return all the matching nodes.
+Constant used for nodes getter methods to return all the matching nodes.
 
 Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
@@ -221,7 +186,7 @@ Adds a css style to a node.
 **Parameters**
 
 -   `node` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** The node for which to add the style.
--   `styles` **([Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>)** An object or an array of objects with css property and value pairs.
+-   `style` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** An object with css property and value pairs.
 
 ### style
 
@@ -246,7 +211,8 @@ Removes a list of nodes.
 **Parameters**
 
 -   `getterOrNodes` **([Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)>)** Getter function for the node or a list of nodes to be removed.
--   `params` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)> | [HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element))?** Parameter or parameters needed for the getter. Optional if a list of nodes is passed for `getterOrNodes`.
+-   `paramOrParams` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)> | [HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element))?** Parameter or parameters needed for the getter. Optional if a list of nodes is passed for `getterOrNodes`.
+-   `args` **...any** 
 
 ### insertBefore
 
@@ -268,13 +234,15 @@ Inserts a node after another existing one.
 
 ### addObserver
 
-Adds a MutationObserver with a given callback.
+Creates an observer with a given callback.
 
 **Parameters**
 
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `root` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node on which to observe mutations. (optional, default `document.body`)
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional parameters to pass to the observer. (optional, default `{childList:true,subtree:true}`)
+
+Returns **[MutationObserver](https://developer.mozilla.org/docs/Web/API/MutationObserver)** The created observer.
 
 ### onNodeExists
 
@@ -283,7 +251,7 @@ Registers a function to be called when a node is first inserted in the DOM.
 **Parameters**
 
 -   `getter` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Getter function for the node.
--   `params` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)** Parameter or parameters needed for the getter.
+-   `paramOrParams` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>)** Parameter or parameters needed for the getter.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `disconnect` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Set to false to prevent the observer to disconnect after the node is found. (optional, default `true`)
 
@@ -314,15 +282,11 @@ Registers a function to be called when nodes are inserted in the DOM.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `root` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node on which to observe mutations. (optional, default `document.body`)
 
-### error
+### gm
 
-Prints error message to the console about missing @grant.
+Collection of GreaseMonkey specific functions.
 
-**Parameters**
-
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the grant.
-
-Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection of functions.
 
 ### get
 
@@ -330,7 +294,7 @@ Retrieves a stored entry value.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The entry's value or empty string.
 
@@ -340,7 +304,7 @@ Stores an entry.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
 -   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The value of the entry.
 
 ### add
@@ -349,8 +313,8 @@ Appends an item to the stored entry's value.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
--   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be appended.
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
+-   `item` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be appended.
 
 ### remove
 
@@ -358,8 +322,16 @@ Removes an item from the stored entry's value.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
--   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be removed.
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
+-   `item` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be removed.
+
+### clear
+
+Removes all the items from the stored entry's value.
+
+**Parameters**
+
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
 
 ### contains
 
@@ -367,8 +339,8 @@ Checks if the stored entry's value contains an item.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
--   `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be searched.
+-   `entryName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the entry.
+-   `item` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The item to be searched.
 
 Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the item exists.
 
@@ -378,7 +350,7 @@ Reads content from a resource file.
 
 **Parameters**
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The resource name.
+-   `resourceName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The resource's name.
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The content of the resource file.
 
@@ -392,3 +364,61 @@ Makes an XMLHttpRequest and returns the text response.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `context` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional object to be passed to the callback function. (optional, default `null`)
 -   `method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Optional request method (defaults to "GET"). (optional, default `"GET"`)
+
+### concatenate
+
+Concatenates two collections and returns the result.
+
+**Parameters**
+
+-   `first` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | HTMLCollection)** The first collection.
+-   `second` **([Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | HTMLCollection)** The second collection.
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)>** The resulting array.
+
+### toArray
+
+Converts an array-like object to an Array.
+
+**Parameters**
+
+-   `collection` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The collection to be converted.
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** The resulting array.
+
+### forEach
+
+Executes a function on elements of an array.
+Return `true` from the `callback` to stop the loop.
+
+**Parameters**
+
+-   `array` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** The array to be iterated.
+-   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
+
+### isOnWebsite
+
+Checks if current location is on given host.
+
+**Parameters**
+
+-   `hostName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The hostname to test against.
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the location is on host.
+
+### isOnPath
+
+Checks if current location is on given path.
+
+**Parameters**
+
+-   `path` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp))** The path to test against or a regular expression to test it.
+-   `exact` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Pass `true` to match the exact path. (optional, default `false`)
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the location is on path.
+
+### isOnIframe
+
+Checks if running from an iframe.
+
+Returns **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the script is running from an iframe.
