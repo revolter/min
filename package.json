@@ -4,7 +4,7 @@
   "description": "Collection of functions used for DOM manipulations in Userscripts",
   "main": "min.js",
   "scripts": {
-    "lint-code": "jshint min.js",
+    "lint-code": "eslint min.js",
     "build-code": "uglifyjs min.js --compress --mangle --output min.min.js",
     "lint-docs": "documentation lint",
     "build-docs": "documentation readme --section 'Documentation' --quiet",

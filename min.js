@@ -342,6 +342,7 @@ var min = {
              * @return {Object}
              */
             error = function (name) {
+                // eslint-disable-next-line no-console
                 console.error("Forgot to @grant " + name + "!");
 
                 return null;
