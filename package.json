@@ -25,6 +25,7 @@
   "homepage": "https://github.com/revolter/min#readme",
   "devDependencies": {
     "documentation": "^6.3.3",
+    "eslint": "^5.16.0",
     "uglify-js": "^3.3.25"
   }
 }
