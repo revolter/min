@@ -146,7 +146,7 @@ Returns the node or the nodes by the given class name.
 #### Parameters
 
 -   `className` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The class name of the node.
--   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `0`)
+-   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `min.dom.FIRST`)
 -   `scope` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node in which to search. (optional, default `document`)
 
 Returns **([HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element) | HTMLCollection | null)** The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
@@ -158,7 +158,7 @@ Returns the node or the nodes by the given tag name.
 #### Parameters
 
 -   `tagName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The tag name of the node.
--   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `0`)
+-   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `min.dom.FIRST`)
 -   `scope` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node in which to search. (optional, default `document`)
 
 Returns **([HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element) | HTMLCollection | null)** The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
@@ -170,7 +170,7 @@ Returns the node or the nodes by the given css query.
 #### Parameters
 
 -   `query` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The query string for searching the node.
--   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `0`)
+-   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `min.dom.FIRST`)
 -   `scope` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node in which to search. (optional, default `document`)
 
 Returns **([HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | null)** The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
@@ -182,7 +182,7 @@ Returns the node or the nodes by the given xPath location.
 #### Parameters
 
 -   `xPath` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The xPath location the node.
--   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `0`)
+-   `index` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Optional position of the node in the array of those found (defaults to the first one). (optional, default `min.dom.FIRST`)
 -   `scope` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node in which to search. (optional, default `document`)
 
 Returns **([HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element) \| [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)> | null)** The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.

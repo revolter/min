@@ -64,7 +64,7 @@ const min = (function min () {
             /**
              * Returns the node or the nodes by the given class name.
              * @param {string} className - The class name of the node.
-             * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+             * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
              * @returns {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
              */
@@ -81,7 +81,7 @@ const min = (function min () {
             /**
              * Returns the node or the nodes by the given tag name.
              * @param {string} tagName - The tag name of the node.
-             * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+             * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
              * @returns {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
              */
@@ -98,7 +98,7 @@ const min = (function min () {
             /**
              * Returns the node or the nodes by the given css query.
              * @param {string} query - The query string for searching the node.
-             * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+             * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
              * @returns {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
              */
@@ -118,7 +118,7 @@ const min = (function min () {
             /**
              * Returns the node or the nodes by the given xPath location.
              * @param {string} xPath - The xPath location the node.
-             * @param {number} [index=0] - Optional position of the node in the array of those found (defaults to the first one).
+             * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
              * @returns {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
              */
