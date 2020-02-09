@@ -279,10 +279,9 @@ const min = (function _min () {
              * @param {Function} callback - The callback function.
              * @param {HTMLElement} [root=document.body] - Optional root node on which to observe mutations.
              * @param {Object} [options={childList: true, subtree: true}] - Optional parameters to pass to the observer.
-             * @returns {MutationObserver} The created observer.
              */
             "addObserver": function (callback, root, options) {
-                return new MutationObserver(callback).observe(root || document.body, options || {
+                new MutationObserver(callback).observe(root || document.body, options || {
                     "childList": true,
                     "subtree": true
                 });
@@ -305,7 +304,7 @@ const min = (function _min () {
                     // eslint-disable-next-line callback-return
                     callback(getter.apply(min.dom, params));
                 } else {
-                    const observer = this.addObserver(() => {
+                    this.addObserver((_, observer) => {
                         if (getter.apply(min.dom, params)) {
                             if (shouldDisconnect) {
                                 observer.disconnect();

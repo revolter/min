@@ -272,8 +272,6 @@ Creates an observer with a given callback.
 -   `root` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node on which to observe mutations. (optional, default `document.body`)
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional parameters to pass to the observer. (optional, default `{childList:true,subtree:true}`)
 
-Returns **[MutationObserver](https://developer.mozilla.org/docs/Web/API/MutationObserver)** The created observer.
-
 ### onNodeExists
 
 Registers a function to be called when a node is first inserted in the DOM.
