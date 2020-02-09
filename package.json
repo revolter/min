@@ -6,8 +6,8 @@
   "scripts": {
     "lint-code": "eslint min.js",
     "build-code": "uglifyjs min.js --compress --mangle --output min.min.js",
-    "lint-docs": "documentation lint",
-    "build-docs": "documentation readme --section 'Documentation' --quiet",
+    "lint-docs": "documentation lint min.js",
+    "build-docs": "documentation readme min.js --section 'Documentation' --quiet",
     "build": "npm run lint-code && npm run build-code && npm run lint-docs && npm run build-docs"
   },
   "repository": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/revolter/min#readme",
   "devDependencies": {
-    "documentation": "^6.3.3",
+    "documentation": "^12.1.4",
     "eslint": "^5.16.0",
     "eslint-config-userscripts": "git+https://github.com/revolter/eslint-config-userscripts.git",
     "uglify-es": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
