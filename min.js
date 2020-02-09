@@ -3,7 +3,7 @@
  * @type {Object}
  */
 // eslint-disable-next-line no-redeclare, no-unused-vars
-const min = (function min () {
+const min = (function _min () {
     "use strict";
 
     return {
