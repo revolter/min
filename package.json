@@ -26,6 +26,7 @@
   "devDependencies": {
     "documentation": "^6.3.3",
     "eslint": "^5.16.0",
+    "eslint-config-userscripts": "git+https://github.com/revolter/eslint-config-userscripts.git",
     "uglify-es": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   }
 }
