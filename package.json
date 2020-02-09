@@ -26,6 +26,6 @@
   "devDependencies": {
     "documentation": "^6.3.3",
     "eslint": "^5.16.0",
-    "uglify-js": "^3.4.5"
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony"
   }
 }
