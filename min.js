@@ -557,20 +557,29 @@ const min = (function _min () {
                  * @param {Function} callback - The callback function.
                  * @param {Object} [context=null] - Optional object to be passed to the callback function.
                  * @param {string} [method="GET"] - Optional request method (defaults to "GET").
+                 * @param {Object} [headers=null] - Optional request headers.
+                 * @param {boolean} [raw=false] - Indicates if the response should be treated as HTML or not.
                  */
                 // eslint-disable-next-line max-params
-                "xhr": function (url, callback, context, method) {
+                "xhr": function (url, callback, context, method, headers = null, raw = false) {
                     // eslint-disable-next-line camelcase, new-cap
                     typeof GM_xmlhttpRequest === "undefined" ? error("GM_xmlhttpRequest") : GM_xmlhttpRequest({
                         "method": method || "GET",
                         "url": url,
                         "context": context,
+                        "headers": headers,
                         "onload": function (responseDetails) {
-                            const doc = document.createElement("div");
+                            if (raw) {
+                                // eslint-disable-next-line callback-return
+                                callback(responseDetails.responseText, responseDetails.context, responseDetails.finalUrl);
+                            } else {
+                                const doc = document.createElement("div");
 
-                            doc.innerHTML = responseDetails.responseText;
+                                doc.innerHTML = responseDetails.responseText;
 
-                            callback(doc, responseDetails.context, responseDetails.finalUrl);
+                                // eslint-disable-next-line callback-return
+                                callback(doc, responseDetails.context, responseDetails.finalUrl);
+                            }
                         }
                     });
                 }

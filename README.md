@@ -392,6 +392,8 @@ Makes an XMLHttpRequest and returns the text response.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `context` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional object to be passed to the callback function. (optional, default `null`)
 -   `method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Optional request method (defaults to "GET"). (optional, default `"GET"`)
+-   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional request headers. (optional, default `null`)
+-   `raw` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the response should be treated as HTML or not. (optional, default `false`)
 
 ### concatenate
 
