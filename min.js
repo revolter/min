@@ -66,10 +66,12 @@ const min = (function _min () {
              * @param {string} className - The class name of the node.
              * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
+             * @param {Window} [rootWindow=window] - Optional root window of the scope.
              * @returns {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given class name or null if scope is not an HTMLElement.
              */
-            "getByClassName": function (className, index, scope) {
-                if (typeof scope === "undefined" || scope instanceof HTMLElement) {
+            // eslint-disable-next-line max-params
+            "getByClassName": function (className, index, scope, rootWindow) {
+                if (typeof scope === "undefined" || scope instanceof (rootWindow || window).HTMLElement) {
                     const nodes = (scope || document).getElementsByClassName(className);
 
                     return index === this.ALL ? nodes : nodes[index || this.FIRST];
@@ -83,10 +85,12 @@ const min = (function _min () {
              * @param {string} tagName - The tag name of the node.
              * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
+             * @param {Window} [rootWindow=window] - Optional root window of the scope.
              * @returns {HTMLElement|HTMLCollection|null} The node or the array of nodes with the given tag name or null if scope is not an HTMLElement.
              */
-            "getByTagName": function (tagName, index, scope) {
-                if (typeof scope === "undefined" || scope instanceof HTMLElement) {
+            // eslint-disable-next-line max-params
+            "getByTagName": function (tagName, index, scope, rootWindow) {
+                if (typeof scope === "undefined" || scope instanceof (rootWindow || window).HTMLElement) {
                     const nodes = (scope || document).getElementsByTagName(tagName);
 
                     return index === this.ALL ? nodes : nodes[index || this.FIRST];
@@ -100,10 +104,12 @@ const min = (function _min () {
              * @param {string} query - The query string for searching the node.
              * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
+             * @param {Window} [rootWindow=window] - Optional root window of the scope.
              * @returns {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given css query or null if scope is not an HTMLElement.
              */
-            "getByQuery": function (query, index, scope) {
-                if (typeof scope === "undefined" || scope instanceof HTMLElement) {
+            // eslint-disable-next-line max-params
+            "getByQuery": function (query, index, scope, rootWindow) {
+                if (typeof scope === "undefined" || scope instanceof (rootWindow || window).HTMLElement) {
                     const
                         // eslint-disable-next-line no-extra-parens
                         single = (typeof index === "undefined" || index === this.FIRST),
@@ -120,10 +126,12 @@ const min = (function _min () {
              * @param {string} xPath - The xPath location the node.
              * @param {number} [index=min.dom.FIRST] - Optional position of the node in the array of those found (defaults to the first one).
              * @param {HTMLElement} [scope=document] - Optional root node in which to search.
+             * @param {Window} [rootWindow=window] - Optional root window of the scope.
              * @returns {HTMLElement|HTMLElement[]|null} The node or the array of nodes with the given xPath location or null if scope is not an HTMLElement.
              */
-            "getByXPath": function (xPath, index, scope) {
-                if (typeof scope === "undefined" || scope instanceof HTMLElement) {
+            // eslint-disable-next-line max-params
+            "getByXPath": function (xPath, index, scope, rootWindow) {
+                if (typeof scope === "undefined" || scope instanceof (rootWindow || window).HTMLElement) {
                     let computedXPath = xPath;
 
                     scope && scope instanceof HTMLElement && (computedXPath = `.${xPath}`);
