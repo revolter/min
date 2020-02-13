@@ -60,33 +60,35 @@ Collection of functions used for DOM manipulations in Userscripts.
     -   [Parameters](#parameters-15)
 -   [onNodeInserted](#onnodeinserted)
     -   [Parameters](#parameters-16)
+-   [iframe](#iframe)
+    -   [Parameters](#parameters-17)
 -   [gm](#gm)
 -   [get](#get)
-    -   [Parameters](#parameters-17)
--   [set](#set)
     -   [Parameters](#parameters-18)
--   [add](#add)
+-   [set](#set)
     -   [Parameters](#parameters-19)
--   [remove](#remove)
+-   [add](#add)
     -   [Parameters](#parameters-20)
--   [clear](#clear)
+-   [remove](#remove)
     -   [Parameters](#parameters-21)
--   [contains](#contains)
+-   [clear](#clear)
     -   [Parameters](#parameters-22)
--   [read](#read)
+-   [contains](#contains)
     -   [Parameters](#parameters-23)
--   [xhr](#xhr)
+-   [read](#read)
     -   [Parameters](#parameters-24)
--   [concatenate](#concatenate)
+-   [xhr](#xhr)
     -   [Parameters](#parameters-25)
--   [toArray](#toarray)
+-   [concatenate](#concatenate)
     -   [Parameters](#parameters-26)
--   [forEach](#foreach)
+-   [toArray](#toarray)
     -   [Parameters](#parameters-27)
--   [isOnWebsite](#isonwebsite)
+-   [forEach](#foreach)
     -   [Parameters](#parameters-28)
--   [isOnPath](#isonpath)
+-   [isOnWebsite](#isonwebsite)
     -   [Parameters](#parameters-29)
+-   [isOnPath](#isonpath)
+    -   [Parameters](#parameters-30)
 -   [isOnIframe](#isoniframe)
 
 ### min
@@ -316,6 +318,18 @@ Registers a function to be called when nodes are inserted in the DOM.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
 -   `root` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node on which to observe mutations. (optional, default `document.body`)
 
+### iframe
+
+Makes an iframe and returns the content document. It also
+removes it after returning from the callback.
+
+#### Parameters
+
+-   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The url for the iframe.
+-   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
+-   `scope` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)** Optional root node in
+      which to append the iframe. (optional, default `document`)
+
 ### gm
 
 Collection of GreaseMonkey specific functions.
@@ -390,16 +404,20 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 ### xhr
 
-Makes an XMLHttpRequest and returns the text response.
+Makes an XMLHttpRequest and returns the response as HTML or
+raw.
 
 #### Parameters
 
 -   `url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The url of the request.
 -   `callback` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** The callback function.
--   `context` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional object to be passed to the callback function. (optional, default `null`)
--   `method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Optional request method (defaults to "GET"). (optional, default `"GET"`)
+-   `context` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional object to be passed
+      to the callback function. (optional, default `null`)
+-   `method` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Optional request method
+      (defaults to "GET"). (optional, default `"GET"`)
 -   `headers` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Optional request headers. (optional, default `null`)
--   `raw` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the response should be treated as HTML or not. (optional, default `false`)
+-   `raw` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Indicates if the response
+      should be treated as HTML or not. (optional, default `false`)
 
 ### concatenate
 

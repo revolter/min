@@ -394,6 +394,29 @@ const min = (function _min () {
                         min.forEach(mutation.addedNodes, callback);
                     });
                 }, root);
+            },
+
+            /**
+             * Makes an iframe and returns the content document. It also
+             * removes it after returning from the callback.
+             * @param {string} url - The url for the iframe.
+             * @param {Function} callback - The callback function.
+             * @param {HTMLElement} [scope=document] - Optional root node in
+             *   which to append the iframe.
+             */
+            "iframe": function (url, callback, scope = document) {
+                const iframe = min.dom.create("iframe", {
+                    "src": url
+                });
+
+                iframe.onload = () => {
+                    // eslint-disable-next-line callback-return
+                    callback(iframe);
+
+                    min.dom.removeNode(this);
+                };
+
+                scope.body.appendChild(iframe);
             }
         },
 
@@ -561,13 +584,17 @@ const min = (function _min () {
                 },
 
                 /**
-                 * Makes an XMLHttpRequest and returns the text response.
+                 * Makes an XMLHttpRequest and returns the response as HTML or
+                 * raw.
                  * @param {string} url - The url of the request.
                  * @param {Function} callback - The callback function.
-                 * @param {Object} [context=null] - Optional object to be passed to the callback function.
-                 * @param {string} [method="GET"] - Optional request method (defaults to "GET").
+                 * @param {Object} [context=null] - Optional object to be passed
+                 *   to the callback function.
+                 * @param {string} [method="GET"] - Optional request method
+                 *   (defaults to "GET").
                  * @param {Object} [headers=null] - Optional request headers.
-                 * @param {boolean} [raw=false] - Indicates if the response should be treated as HTML or not.
+                 * @param {boolean} [raw=false] - Indicates if the response
+                 *   should be treated as HTML or not.
                  */
                 // eslint-disable-next-line max-params
                 "xhr": function (url, callback, context, method, headers = null, raw = false) {
