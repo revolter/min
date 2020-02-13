@@ -9,7 +9,7 @@
     "build-code": "uglifyjs min.js --compress --mangle --output min.min.js",
     "lint-docs": "documentation lint min.js",
     "build-docs": "documentation readme min.js --section 'Documentation' --quiet",
-    "build": "npm run lint-code && npm run build-code && npm run lint-docs && npm run build-docs"
+    "build": "npm run lint-code && npm run build-code && npm run build-docs"
   },
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@ Collection of functions used for DOM manipulations in Userscripts.
 -   Run `npm run lint-docs` to check for errors in the documentation.
 -   Run `npm run build-docs` to update the documentation.
 -   Run `npm run build` to run all the scripts at the same time, except
-    `fix-code`.
+    `fix-code` and `lint-docs`.
 
 ## Documentation
 
