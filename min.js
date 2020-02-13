@@ -173,7 +173,6 @@ const min = (function _min () {
              */
             "create": function (tagName, attributes) {
                 const node = document.createElement(tagName);
-                let style = "";
 
                 if (attributes) {
                     for (const attributeName in attributes) {
@@ -186,6 +185,8 @@ const min = (function _min () {
                         if (typeof attributeValue === "string") {
                             node.setAttribute(attributeName, attributeValue);
                         } else {
+                            let style = "";
+
                             for (const property in attributeValue) {
                                 // eslint-disable-next-line max-depth
                                 if (!Object.prototype.hasOwnProperty.call(attributeValue, property)) {
