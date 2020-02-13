@@ -5,6 +5,7 @@
   "main": "min.js",
   "scripts": {
     "lint-code": "eslint min.js",
+    "fix-code": "eslint --fix min.js",
     "build-code": "uglifyjs min.js --compress --mangle --output min.min.js",
     "lint-docs": "documentation lint min.js",
     "build-docs": "documentation readme min.js --section 'Documentation' --quiet",
